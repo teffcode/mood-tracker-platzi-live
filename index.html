@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <title>Platzi Live</title>
+  <style>
+    body {
+      background: SeaShell;
+      margin: 0;
+      padding: 20px;
+      height: 100vh;
+      font-family: 'Varela Round', sans-serif;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    h1, .text {
+      text-align: center;
+    }
+
+    .emoji {
+      width: 80px;
+      height: 80px;
+      background: MistyRose;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 16px;
+      cursor: pointer;
+      font-size: 40px;
+      border: 3px solid white;
+    }
+
+    .emoji:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>How do you feel today ?</h1>
+
+  <div class="container">
+    <div class="emoji">🙂</div>
+    <div class="emoji">😐</div>
+    <div class="emoji">😔</div>
+  </div>
+
+  <h2 class="text"></h2>
+</body>
+<script>
+  const emojis = document.querySelectorAll('.emoji')
+  const text = document.querySelector('.text')
+  const feelings = {
+    happy: '🙂',
+    neutral: '😐',
+    sad: '😔'
+  }
+
+  emojis.forEach(emoji => {
+    emoji.addEventListener('click', () => {
+      const feelingsArr = Object.keys(feelings)
+      const feeling = feelingsArr.find(key => {
+        return feelings[key] === emoji.innerHTML
+      })
+      text.innerHTML = feeling
+    })
+  })
+</script>
+</html>
